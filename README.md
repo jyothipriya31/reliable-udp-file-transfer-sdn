@@ -43,24 +43,51 @@ The POX controller monitors inter-switch link status and updates forwarding rule
 ## Project Structure
 
 ```text
-udp_sdn_project/
+reliable-udp-file-transfer-sdn/
 │
-├── topology.py
 ├── sender.py
 ├── receiver.py
 ├── protocol.py
+├── topology.py
+├── out_of_order_test.py
+├── README.md
 │
-└── pox_ext/
-    └── reliable_paths.py
+├── pox_ext/
+│   └── reliable_paths.py
+│
+├── demo_logs/
+│   ├── normal.log
+│   ├── loss.log
+│   ├── ack.log
+│   ├── missing.log
+│   ├── integrity.log
+│   ├── reroute_sender.log
+│   └── reroute_receiver.log
+│
+├── received/
+│   ├── received_sample.txt
+│   ├── received_large.bin
+│   ├── received_reroute_test.bin
+│   └── received_out_of_order_demo.txt
+│
+├── sample.txt
+├── large.bin
+└── reroute_test.bin
 ```
 
-| File | Description |
+| File / Folder | Description |
 |---|---|
-| `topology.py` | Defines the Mininet diamond topology. |
 | `sender.py` | Sends files using UDP. |
 | `receiver.py` | Receives and reconstructs files. |
-| `protocol.py` | Implements communication protocol functionality. |
-| `reliable_paths.py` | POX controller logic for path management and link failure handling. |
+| `protocol.py` | Handles protocol message formatting and communication. |
+| `topology.py` | Defines the Mininet diamond topology. |
+| `out_of_order_test.py` | Tests out-of-order packet handling. |
+| `pox_ext/` | Contains the POX SDN controller implementation. |
+| `demo_logs/` | Contains logs from different testing scenarios. |
+| `received/` | Stores files received during transfer tests. |
+| `sample.txt` | Small sample file for testing. |
+| `large.bin` | Large-file transfer test input. |
+| `reroute_test.bin` | Test input used during SDN rerouting experiments.
 
 ## Key Features
 
